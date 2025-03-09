@@ -7,7 +7,7 @@ manufacturer = "HowardN97"
 serial_number = "vial:f64c2b3c:000001"
 #chip = "nrf52840"
 board = "nice!nano_v2"
-
+usb_enbale = true
 [layout]
 rows = 4
 cols = 20
@@ -17,13 +17,13 @@ keymap = [
         ["Tab", "Q", "W","E","R", "T", "_","_","_","_","_","_","_","_","Y","U","I","O","P","Backspace"],
         ["Escape", "A", "S","D","F", "G", "_","_","_","_","_","_","_","_","H","J","K","L","Semicolon","Quote"],
         ["LShift", "Z", "X","C","V", "B", "KbVolumeUp","_","_","_","_","_","_","KbVolumeDown","N","M","Comma","Dot","Slash","RShift"],
-        ["_", "_", "_","_","_", "_", "_","LGui","LCrtl","Space","Space","MO(1)","RAlt","_","_","_","_","_","_","_"]
+        ["_", "_", "_","_","_", "_", "_","LGui","LCtrl","Space","Space","MO(1)","RAlt","_","_","_","_","_","_","_"]
     ],
     [
         ["Grave", "Kc1", "Kc2","Kc3","Kc4", "Kc5", "_","_","_","_","_","_","_","_","Kc6","Kc7","Kc8","Kc9","Kc0","Backslash"],
-          ["Minus", "LM(Minus,LShift)", "MouseLeft","MouseUp","MouseDown", "MouseRight", "_","_","_","_","_","_","_","_","Left","Down","UP","Right","LM(Equal,RShift)","Equal"],
-      ["LShift", "LeftBracket", "RightBracket","LM(LeftBracket,LShift)","LM(RightBracket,LShift)", "MouseBtn2", "Calculator","_","_","_","_","_","_","PrintScreen","MouseBtn1","MouseWheelDown","MouseWheelUp","_","_","_"],
-        ["_", "_", "_","_","_", "_", "_","MO(2)","LCrtl","Enter","_","_","_","_","_","_","_","_","_","_"]
+          ["Minus", "WM(Minus,LShift)", "MouseLeft","MouseUp","MouseDown", "MouseRight", "_","_","_","_","_","_","_","_","Left","Down","UP","Right","WM(Equal,RShift)","Equal"],
+      ["LShift", "LeftBracket", "RightBracket","WM(LeftBracket,LShift)","WM(RightBracket,LShift)", "MouseBtn2", "Calculator","_","_","_","_","_","_","PrintScreen","MouseBtn1","MouseWheelDown","MouseWheelUp","_","_","_"],
+        ["_", "_", "_","_","_", "_", "_","MO(2)","LCtrl","Enter","_","_","_","_","_","_","_","_","_","_"]
     ],
     [
         ["_", "F1", "F2","F3","F4", "F5", "_","_","_","_","_","_","_","_","F6","F7","F8","F9","F10","_"],
@@ -34,6 +34,12 @@ keymap = [
 ]
 
 [storage]
+enabled = true
+# Start address of local storage, MUST BE start of a sector.
+# If start_addr is set to 0(this is the default value), the last `num_sectors` sectors will be used.
+start_addr = 0x00000000
+# How many sectors are used for storage, the default value is 2
+num_sectors = 2
 
 [ble]
 enabled = true
@@ -44,9 +50,9 @@ battery_adc_pin = "vddh"
 adc_divider_measured = 2000
 adc_divider_total = 2806
 # Pin that reads battery's charging state, `low-active` means the battery is charging when `charge_state.pin` is low
-charge_state = { pin = "PIN_1", low_active = true }
+charge_state = { pin = "P0_07", low_active = true }
 # Output LED pin that blinks when the battery is low
-charge_led= { pin = "PIN_2", low_active = true }
+charge_led= { pin = "P0_08", low_active = true }
 
 [behavior]
 #tap_hold = { enable_hrm = true, prior_idle_time = "120ms", hold_timeout = "250ms", post_wait_time = "50ms"}
@@ -78,4 +84,3 @@ ble_addr = [0x7e, 0xfe, 0x73, 0x9e, 0x66, 0xe3]
 matrix_type = "normal"
 input_pins = ["P0_11","P1_00","P0_24","P0_22"]
 output_pins = ["P1_15", "P1_13","P1_11","P1_10","P0_09","P1_06","P1_08","P0_31","P0_29","P0_02"]
-
