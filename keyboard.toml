@@ -5,8 +5,8 @@ vendor_id = 0x4c4b
 product_id = 0x4643
 manufacturer = "HowardN97"
 serial_number = "vial:f64c2b3c:000001"
-#chip = "nrf52840"
-board = "nice!nano"
+chip = "nrf52840"
+
 usb_enbale = true
 [layout]
 rows = 4
